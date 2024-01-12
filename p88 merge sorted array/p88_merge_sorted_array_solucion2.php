@@ -1,7 +1,7 @@
 <?php
 /*
 ejercicio 88: unir 2 arreglos
-//solucion 1.
+//solucion 2.
 You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, 
 representing the number of elements in nums1 and nums2 respectively.
 
