@@ -1,6 +1,7 @@
 <?php
 /*
 ejercicio 88: unir 2 arreglos
+//solucion 1.
 You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, 
 representing the number of elements in nums1 and nums2 respectively.
 
@@ -16,20 +17,20 @@ and the last n elements are set to 0 and should be ignored. nums2 has a length o
 */
 
 //caso1
-/*
+
 $nums1 = [1,2,3,0,0,0];
 $nums2 = [2,5,6];
-*/
-//caso2
 
+//caso2
+/*
 $nums1 = [1];
 $nums2 = [];
-
+*/
 //caso3
-
+/*
 $nums1 = [0];
 $nums2 = [1];
-
+*/
 merge($nums1, $nums2);
 echo("solucion: ");
 print_r($nums1);
