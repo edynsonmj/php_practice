@@ -16,69 +16,74 @@ and the last n elements are set to 0 and should be ignored. nums2 has a length o
 */
 
 //caso1
+/*
 $nums1 = [1,2,3,0,0,0];
 $nums2 = [2,5,6];
-
+*/
 //caso2
-/*
+
 $nums1 = [1];
 $nums2 = [];
-*/
+
 //caso3
-/*
+
 $nums1 = [0];
 $nums2 = [1];
-*/
 
-merge($nums1,$nums2);
-echo("resultado: ");
+merge($nums1, $nums2);
+echo("solucion: ");
 print_r($nums1);
 
-function merge(&$nums1, $nums2) {
-    $resultado = [];
-    $n1=sizeof($nums1); //obteniendo tamaños de los arrays
+function merge (&$nums1, $nums2){
+    //limpiando array
+    outcero($nums1);
+    outcero($nums2);
+
+    $resultado=[];
+    $n1=sizeof($nums1);
     $n2=sizeof($nums2);
-    $a=null;
-    $b=null;
-    $cont1=0;   //contador array1
-    $cont2=0;   //contador array2
+    $cont1 = 0;
+    $cont2 = 0;
+    $a=0;
+    $b=0;
+
     while(true){
-        //paso 1: obtener valores o marcar como array finalizado.
         if($cont1 < $n1){
             $a = $nums1[$cont1];
-        }else{
-            $a='';
         }
         if($cont2 < $n2){
             $b = $nums2[$cont2];
-        }else{
-            $b='';
         }
-
-        //paso 2: condiciones para viabilidada a insercion: valor menor, array no finalizado, array contrario finalizado.
-        if(($a < $b && $cont1<$n1) || ($cont2>=$n2)){
-            //si valor es cero se omite y aumenta contador.
-            if($a==0){
-                $cont1++;
-            }else
-            if($a!=''){
-                array_push($resultado,$a);
+        if($cont1 < $n1){
+            if($a<=$b || $cont2>=$n2){
+                array_push($resultado, $a);
                 $cont1++;
             }
         }
-        if(($b <= $a && $cont2<$n2) || ($cont1>=$n1)){
-            if($b==0){
-                $cont2++;
-            }else
-            if($b!=''){
-                array_push($resultado,$b);
+        if($cont2 < $n2){
+            if($b<$a || $cont1>=$n1){
+                array_push($resultado, $b);
                 $cont2++;
             }
         }
-        //paso 3: condicion para cerrar ciclo.
         if($cont1>=$n1 && $cont2>=$n2){
             break;
         }
     }
     $nums1=$resultado;
+}
+
+/**
+ * Funcion recursiva que elimina ceros a la derecha en un array
+ */
+function outcero (&$nums){
+    $size = sizeof($nums);
+    if($size<=0){
+        return;
+    }
+    if($nums[$size-1]!=0){
+        return;
+    }
+    unset($nums[$size-1]);
+    outcero($nums);
 }
